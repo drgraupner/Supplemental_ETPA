@@ -1,0 +1,1 @@
+Just as a quick note for these methods.  For the figures that I was making in summer 2024, the Matlab code took ~16 hours to calculate the data for the figure while the Fortran code took ~3 hours to calculate the data.

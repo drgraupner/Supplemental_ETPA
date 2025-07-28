@@ -1,0 +1,24 @@
+######################
+Instructions for using the Matlab codes to generate the degenerate ETPA figures
+written by David Graupner 2024
+
+
+Place all the provided Matlab codes and the .mat file (output of transition_dipole.py) in the same directory.
+
+In the individual_etpa_fig_degenerate.m code 
+  Change the variable in line 3 to match the name of the .mat file that you are using (without the extension)
+  Lines 5-17 are where the parameters that we enter are set.
+    Energies should be entered in eV
+      it is possible to set up for other units but the conversion factor I have set up later in code uses eV
+    Entanglement time should be in seconds
+Run the individual_etpa_fig_degenerate.m code
+  This will generate the degenerate ETPA figure
+    Note that I only set up this figure to get a quick look at the results and have made other codes that generate good looking figures
+      See Combo_Figures for the codes that generate better looking figures
+
+Outputs the Rgrid_symmetric_per file
+  Contains the degenerate ETPA spectra data (First column is energy values in eV, second column is absorption intensity)
+
+Note that the Fortran code will also produce this file (named Rgrid_deg)
+  See the Fortran section of the Nondegenerate_ETPA_Figure for more info on Fortran code
+  Note that I was having some issues with the Fortran output of this file. I have fixed what I believe was the issue but haven't actually tested the new results due to this data taking ~1 minute to generate using the Matlab code. 

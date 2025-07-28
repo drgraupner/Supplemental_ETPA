@@ -1,0 +1,59 @@
+#######################
+Instructions for using the ETPA.f code to generate the nondegenerate ETPA figures (blue figures)
+written by David Graupner 2024
+
+
+Compile the ETPA.f code (I was just using the standard settings on Chicoma)
+
+The resulting executable will require two input files.  (I'm going to write this with the assumption that you have the fortran executable and the two input files in the same directory)
+  The ORCA .out file from a TDDFT calculation
+    Make sure that DOTRANS ALL is included in the calculation
+  Text file that the user creates
+    This will be a file with the following form:
+
+    <Minimum idler energy in eV> <Maximum idler energy in eV> <Size of idler energy steps in eV>
+    <Minimum signal energy in eV> <Maximum signal energy in eV> <Size of signal energy steps in eV>
+    <Entanglement time in second>
+    <ETPA Gamma value in eV> <SPA Gamma value in eV>
+    <Minimum energy to calculate SPA> <Maximum energy to calculate SPA> <Number of energy steps used in SPA calculation>
+    <X compontent of Idler Polarization> <Y compontent of Idler Polarization> <Z compontent of Idler Polarization>
+    <X compontent of Signal Polarization> <Y compontent of Signal Polarization> <Z compontent of Signal Polarization>
+
+    Note that ETPA asks for the size of the energy steps while SPA asks for the number of energy steps
+    The polarization vectors can be given as real or complex values
+      for real values just write the number [i.e. 1 4.987 5.09]
+      for complex values use the form (<real part>,<imaginary part>)  [i.e. (1,0) (1,1) (1.898,4.89)]
+    The file ETPA_input_example is this directory is an example of the needed input file using the default values
+    While I have set this up to have default values, I put minimal effort into making the code work with the default values so I would recommend that you provide values
+      You can in theory specify some values and use defaults for other but once you stop specifing a value you cannot specify a later value in the file (e.g. you can only specify the three idler energy values in the file and then use the default values for all the others, but if you want to use a different value for the SPA Gamma value you must also specify the signal energy values, entanglement time, and ETPA Gamma value)
+
+
+The code can be run using the form:
+  <Name of executable> <Name of ORCA .out file> <Name of text input file (default name: ETPA_per)>
+
+  Note that I have included a example slurm submission script to run the code in this directory.  It assumes that you named the executable ETPA.exe and the text input file is named ETPA_per.
+
+The code will output several files
+  <ORCA .out>.mlab
+    Text file with Eigenenergies, oscilator strengths, and transition dipoles for calculated transitions
+  spectrum_spa
+    File with spa spectrum data (first column is energy value in eV, second column is absorption intensity)
+  Rgrid_deg
+    Degenerate ETPA spectrum data (first column is idler energy value in eV, second column is absorption intensity)
+    Note that I was having some issues with this file that I think I have fixed but haven't tested to make sure. The matlab code works with no issue for this data so I didn't put a huge effort into getting this one correct.
+  Igrid_nondeg
+    Values used for idler energy in nondegenerate ETPA calculation
+  Sgrid_nondeg
+    Values used for signal energy in nondegenerate ETPA calculation
+  Rgrid_nondeg
+    Values for absorption intensity in nondegenerate ETPA calculation
+    Note there is a nonconsistent form for the data that will make it annoying to deal with directly from this file
+
+
+The ETPA_2d_signolvidler_fortran.m matlab code then uses the Igrid_nondeg, Sgrid_nondeg, and Rgrid_nondeg files to generate the nondegenerate ETPA (blue) figures.  Assuming that you carefully pick the values for of idler and signal energy you shouldn't need to change anything in the matlab code, but you can play with the ranges of those values in the matlab code to adjust the color code.
+
+
+The spectrum_spa and Rgrid_deg files can be directly used to generate spectra using your preferance for figure making.  I have provided matlab codes in other directories that could be used to generate these figures but I am not including them here as I primarily wrote this code for the nondegenerate figures.
+
+
+
