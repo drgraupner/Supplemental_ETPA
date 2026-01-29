@@ -1,3 +1,7 @@
 Supplemental Information for [Computational Study of Entangled Two-Photon Absorption in Organic Dyes](https://doi.org/10.26434/chemrxiv-2025-ztzl6)
+Check back for peer-reviewed article link. 
 
-In this work we present a theoretical investigation of entangled two-photon absorption (ETPA) in organic dyes. We explore how photon pair characteristics—specifically degeneracy and non-degeneracy—affect absorption behavior, with the aim of guiding future experimental efforts. Our results show that ETPA spectra are highly sensitive to the photon pair energy, with enhanced absorption occurring when one of the photons approaches resonance with a one-photon-allowed transition. This work provides a practical framework for identifying and prioritizing systems likely to exhibit measurable ETPA, enabling more targeted and efficient experimental exploration
+## Content: 
+🧪 - chemical structures of all optimized structures from the artcile in .xyz format
+🔬 - all calculated transition dipole moments in .csv format 
+
