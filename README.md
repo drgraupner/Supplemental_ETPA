@@ -2,6 +2,6 @@ Supplemental Information for [Computational Study of Entangled Two-Photon Absorp
 Check back for peer-reviewed article link. 
 
 ## Content: 
-🧪 - chemical structures of all optimized structures from the artcile in .xyz format
+🧪 - chemical structures of all optimized structures from the artcile in .xyz format    
 🔬 - all calculated transition dipole moments in .csv format 
 
